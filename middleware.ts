@@ -41,7 +41,21 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/favicon.ico') ||
-    pathname.includes('.')
+    pathname.startsWith('/manifest.json') ||
+    pathname.startsWith('/sw.js') ||
+    pathname.startsWith('/robots.txt') ||
+    pathname.startsWith('/sitemap.xml') ||
+    pathname.endsWith('.ico') ||
+    pathname.endsWith('.png') ||
+    pathname.endsWith('.jpg') ||
+    pathname.endsWith('.jpeg') ||
+    pathname.endsWith('.gif') ||
+    pathname.endsWith('.svg') ||
+    pathname.endsWith('.css') ||
+    pathname.endsWith('.js') ||
+    pathname.endsWith('.json') ||
+    pathname.endsWith('.xml') ||
+    pathname.endsWith('.txt')
   ) {
     return NextResponse.next();
   }
@@ -162,8 +176,11 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * - manifest.json (PWA manifest)
+     * - sw.js (service worker)
      * - public (public files)
+     * - static assets (.js, .css, .png, etc.)
      */
-    '/((?!api/auth|_next/static|_next/image|favicon.ico|public).*)',
+    '/((?!api/auth|_next/static|_next/image|favicon.ico|manifest.json|sw.js|.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json|xml|txt)$|public).*)',
   ],
 };

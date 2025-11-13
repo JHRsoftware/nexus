@@ -163,15 +163,15 @@ const LoginPage: React.FC = () => {
             console.error('Router.push failed:', error);
           }
           
-          // Method 2: Test redirect to bypass middleware first
+          // Method 2: Fallback redirect to home page
           setTimeout(() => {
-            console.log('Testing redirect to test-home (bypasses middleware)');
+            console.log('Fallback: Using window.location.href to redirect to home');
             try {
-              window.location.href = '/test-home';
-            } catch (error) {
-              console.error('Redirect to test-home failed:', error);
-              // Fallback to regular home
               window.location.href = '/';
+            } catch (error) {
+              console.error('window.location.href failed:', error);
+              // Method 3: Force replace
+              window.location.replace('/');
             }
           }, 1000);
           
