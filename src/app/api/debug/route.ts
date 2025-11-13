@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client';
 
 export async function GET() {
   try {
@@ -11,13 +12,14 @@ export async function GET() {
       NEXTAUTH_URL_SET: !!process.env.NEXTAUTH_URL,
     };
 
-    // Check if we can import Prisma
+    // Check if Prisma is available
     let prismaStatus = 'unknown';
     try {
-      const { PrismaClient } = await import('@prisma/client');
-      prismaStatus = 'imported successfully';
+      const testClient = new PrismaClient();
+      prismaStatus = 'imported and instantiated successfully';
+      await testClient.$disconnect();
     } catch (error) {
-      prismaStatus = `import failed: ${error instanceof Error ? error.message : 'unknown error'}`;
+      prismaStatus = `instantiation failed: ${error instanceof Error ? error.message : 'unknown error'}`;
     }
 
     return NextResponse.json({
