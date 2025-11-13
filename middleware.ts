@@ -22,7 +22,7 @@ const protectedRoutes = {
 };
 
 // Public routes that don't require authentication
-const publicRoutes = ['/login', '/test-login', '/login-test', '/health', '/api/auth/login', '/api/auth/logout', '/api/health-simple', '/api/debug', '/api/test-db', '/api/login-debug'];
+const publicRoutes = ['/login', '/test-login', '/login-test', '/test-home', '/health', '/api/auth/login', '/api/auth/logout', '/api/health-simple', '/api/debug', '/api/test-db', '/api/login-debug'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -108,10 +108,17 @@ export function middleware(request: NextRequest) {
   // For home page ('/'), check if user is authenticated
   if (pathname === '/') {
     if (!userData) {
-      console.log(`Middleware: Redirecting to login from home - No authentication`);
+      console.log(`Middleware: No user data found for home page, redirecting to login`);
       return NextResponse.redirect(new URL('/login', request.url));
     } else {
-      console.log(`Middleware: User ${userData.username} accessing home page - allowing`);
+      console.log(`Middleware: User ${userData.username || 'unknown'} accessing home page - ALLOWED`);
+      console.log(`Middleware: User access pages:`, userData.accessPages || 'none');
+      
+      // Check if user has home access
+      if (!userData.accessPages || !userData.accessPages.includes('home')) {
+        console.log(`Middleware: User lacks home access, redirecting to login`);
+        return NextResponse.redirect(new URL('/login', request.url));
+      }
     }
     
     // Check if user has access to home page

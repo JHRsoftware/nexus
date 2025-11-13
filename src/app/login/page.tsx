@@ -149,17 +149,31 @@ const LoginPage: React.FC = () => {
         // Trigger auth change event to update contexts immediately
         window.dispatchEvent(new CustomEvent('authChange'));
 
-        // Simplified redirect logic to prevent loops
+        // Enhanced redirect logic with multiple approaches
         console.log('Login successful, user data:', result.user);
         
         if (result.user && result.user.accessPages.includes('home')) {
-          console.log('User has home access, redirecting...');
+          console.log('User has home access, attempting redirect...');
           
-          // Small delay to ensure cookie is set and auth context updates
+          // Method 1: Try router.push first
+          try {
+            console.log('Attempting router.push("/")');
+            router.push('/');
+          } catch (error) {
+            console.error('Router.push failed:', error);
+          }
+          
+          // Method 2: Test redirect to bypass middleware first
           setTimeout(() => {
-            console.log('Performing redirect to home page');
-            window.location.href = '/';
-          }, 500);
+            console.log('Testing redirect to test-home (bypasses middleware)');
+            try {
+              window.location.href = '/test-home';
+            } catch (error) {
+              console.error('Redirect to test-home failed:', error);
+              // Fallback to regular home
+              window.location.href = '/';
+            }
+          }, 1000);
           
         } else {
           // If no home access, clear session and show error
