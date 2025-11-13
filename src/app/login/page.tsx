@@ -139,57 +139,37 @@ const LoginPage: React.FC = () => {
           sessionStorage.setItem('currentUser', JSON.stringify(userData));
         }
 
-        // Also set a cookie for middleware to read
-        document.cookie = `currentUser=${encodeURIComponent(JSON.stringify(userData))}; path=/; ${rememberMe ? 'max-age=2592000' : 'session'}`;
+        // Set a simpler cookie for middleware to read (avoid JSON parsing issues)
+        const cookieValue = encodeURIComponent(JSON.stringify(userData));
+        const maxAge = rememberMe ? '; max-age=2592000' : '';
+        document.cookie = `currentUser=${cookieValue}; path=/${maxAge}; SameSite=Lax`;
+        
+        console.log('Cookie set:', document.cookie);
 
         // Trigger auth change event to update contexts immediately
         window.dispatchEvent(new CustomEvent('authChange'));
 
-        // Enhanced redirect logic with debugging
+        // Simplified redirect logic to prevent loops
         console.log('Login successful, user data:', result.user);
-        console.log('User access pages:', result.user.accessPages);
-        console.log('Environment:', process.env.NODE_ENV);
         
-        // Try multiple redirect approaches for better compatibility
-        const attemptRedirect = () => {
-          if (result.user) {
-            const userAccessPages = result.user.accessPages;
-            
-            if (userAccessPages.includes('home')) {
-              console.log('Attempting redirect to home page...');
-              
-              // Try multiple redirect methods for Vercel compatibility
-              try {
-                // Method 1: Next.js router
-                router.push('/');
-                
-                // Method 2: Fallback with window.location (after delay)
-                setTimeout(() => {
-                  if (window.location.pathname === '/login') {
-                    console.log('Router redirect failed, using window.location');
-                    window.location.href = '/';
-                  }
-                }, 1000);
-                
-              } catch (error) {
-                console.error('Redirect error:', error);
-                // Method 3: Force redirect
-                window.location.replace('/');
-              }
-            } else {
-              // If no home access, clear session and show error
-              console.log('No home access for user');
-              localStorage.removeItem('currentUser');
-              sessionStorage.removeItem('currentUser');
-              window.dispatchEvent(new CustomEvent('authChange'));
-              setErrors({ general: 'Access denied. You do not have permission to access the home page.' });
-            }
-          }
-        };
-
-        // Try immediate redirect and fallback with delay
-        attemptRedirect();
-        setTimeout(attemptRedirect, 100);
+        if (result.user && result.user.accessPages.includes('home')) {
+          console.log('User has home access, redirecting...');
+          
+          // Small delay to ensure cookie is set and auth context updates
+          setTimeout(() => {
+            console.log('Performing redirect to home page');
+            window.location.href = '/';
+          }, 500);
+          
+        } else {
+          // If no home access, clear session and show error
+          console.log('No home access for user');
+          localStorage.removeItem('currentUser');
+          sessionStorage.removeItem('currentUser');
+          document.cookie = 'currentUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+          window.dispatchEvent(new CustomEvent('authChange'));
+          setErrors({ general: 'Access denied. You do not have permission to access the home page.' });
+        }
       } else {
         setErrors({ general: result.error || 'Login failed. Please try again.' });
       }

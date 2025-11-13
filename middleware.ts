@@ -50,14 +50,17 @@ export function middleware(request: NextRequest) {
   let userData = null;
   
   try {
-    // Try to get user from session storage via cookie (for client-side)
+    // Try to get user from cookie (properly decode URL encoded JSON)
     const userCookie = request.cookies.get('currentUser');
-    if (userCookie) {
-      userData = JSON.parse(userCookie.value);
+    if (userCookie && userCookie.value) {
+      const decodedValue = decodeURIComponent(userCookie.value);
+      userData = JSON.parse(decodedValue);
+      console.log(`Middleware: Found user in cookie: ${userData.username}`);
     }
   } catch (error) {
-    // If cookie parsing fails, redirect to login
-    console.log('Invalid user cookie, redirecting to login');
+    // If cookie parsing fails, continue without user data
+    console.log('Middleware: Cookie parsing failed:', error);
+    userData = null;
   }
 
   // Check if route requires authentication
@@ -107,6 +110,8 @@ export function middleware(request: NextRequest) {
     if (!userData) {
       console.log(`Middleware: Redirecting to login from home - No authentication`);
       return NextResponse.redirect(new URL('/login', request.url));
+    } else {
+      console.log(`Middleware: User ${userData.username} accessing home page - allowing`);
     }
     
     // Check if user has access to home page
