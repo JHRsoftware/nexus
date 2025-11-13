@@ -8,8 +8,9 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx prisma generate && next build",
     "start": "next start",
+    "postinstall": "npx prisma generate",
     "db:generate": "npx prisma generate",
     "db:migrate:deploy": "npx prisma migrate deploy",
     "db:studio": "npx prisma studio"
