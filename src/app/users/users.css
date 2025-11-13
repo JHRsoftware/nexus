@@ -1,0 +1,449 @@
+/* Users Page Global Styles with Loading Animation Support */
+
+/* Page Layout */
+.page-container {
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+.page-header {
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-card);
+}
+
+.page-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.page-subtitle {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.page-content {
+  padding: 2rem;
+}
+
+/* Action Buttons */
+.users-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Form Styles */
+.add-user-form {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-user-form h3 {
+  margin: 0 0 1.5rem 0;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.required-asterisk {
+  color: var(--color-error, #ef4444);
+  margin-left: 0.25rem;
+}
+
+.themed-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.themed-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.themed-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--color-card-alt);
+}
+
+.error-text {
+  color: var(--color-error, #ef4444);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.error-text::before {
+  content: '⚠️';
+  font-size: 0.875rem;
+}
+
+/* Access Pages Selection */
+.access-pages-group {
+  grid-column: 1 / -1;
+}
+
+.access-pages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.access-page-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-background);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.access-page-checkbox:hover {
+  background: var(--color-card);
+  border-color: var(--color-primary);
+}
+
+.access-page-checkbox input[type="checkbox"] {
+  margin: 0;
+  accent-color: var(--color-primary);
+}
+
+.access-page-checkbox:has(input:checked) {
+  background: rgba(74, 144, 226, 0.1);
+  border-color: var(--color-primary);
+}
+
+.access-tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: rgba(74, 144, 226, 0.1);
+  border: 1px solid rgba(74, 144, 226, 0.2);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0.125rem;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.themed-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  min-width: 120px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.themed-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.themed-button.primary,
+.themed-button.primary-action {
+  background: var(--color-primary);
+  color: white;
+}
+
+.themed-button.primary:hover:not(:disabled),
+.themed-button.primary-action:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+}
+
+.themed-button.secondary {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.themed-button.secondary:hover:not(:disabled) {
+  background: var(--color-card);
+  border-color: var(--color-primary);
+}
+
+.themed-button.success {
+  background: var(--color-success);
+  color: white;
+}
+
+.themed-button.success:hover:not(:disabled) {
+  background: var(--color-success-dark);
+}
+
+.themed-button.error {
+  background: var(--color-error);
+  color: white;
+}
+
+.themed-button.error:hover:not(:disabled) {
+  background: var(--color-error-dark);
+}
+
+/* Loading States */
+.loading-spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error Messages */
+.error-banner {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-error, #ef4444);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.error-banner::before {
+  content: '⚠️';
+  font-size: 1.25rem;
+}
+
+/* Success Messages */
+.success-banner {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-success, #22c55e);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.success-banner::before {
+  content: '✅';
+  font-size: 1.25rem;
+}
+
+/* Loading Animation Integration */
+.themed-button.loading {
+  pointer-events: none;
+}
+
+.themed-button.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: inherit;
+}
+
+/* Table Styles */
+.users-table-container {
+  background: var(--color-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.users-table th {
+  background: var(--color-card-alt);
+  font-weight: 600;
+  color: var(--color-text);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.users-table tr:hover {
+  background: var(--color-card-hover);
+}
+
+.users-table tr.editing {
+  background: rgba(74, 144, 226, 0.05);
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.table-action {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .page-content {
+    padding: 1rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .themed-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 1rem;
+  }
+  
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .users-actions {
+    flex-direction: column;
+  }
+  
+  .add-user-form {
+    padding: 1rem;
+  }
+  
+  .access-pages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .themed-button,
+  .access-page-checkbox,
+  .themed-input {
+    transition: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .themed-button,
+  .themed-input,
+  .add-user-form {
+    border-width: 2px;
+  }
+  
+  .error-banner,
+  .success-banner {
+    border-width: 2px;
+  }
+}
+
+/* Focus Styles */
+.themed-button:focus-visible,
+.themed-input:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .users-actions,
+  .form-actions,
+  .table-actions,
+  .themed-button {
+    display: none;
+  }
+  
+  .page-container {
+    background: white;
+    color: black;
+  }
+}

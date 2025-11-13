@@ -1,0 +1,196 @@
+/* Reports Page Styles - Theme Integrated & Mobile Responsive */
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background: var(--color-background, var(--background, #fff));
+  color: var(--color-text, var(--text, #333));
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-primary, var(--primary, #222));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.reportCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.reportCard {
+  background: var(--color-surface, var(--surface, #f9f9f9));
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.reportCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  border-color: var(--color-primary, var(--primary, #007bff));
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cardHeader h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text, var(--text, #333));
+  margin: 0;
+}
+
+.cardIcon {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cardContent p {
+  color: var(--color-text-secondary, var(--text-secondary, #666));
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cardButton {
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary, var(--primary, #007bff));
+  color: var(--color-text-inverse, white);
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.cardButton:hover {
+  background: var(--color-primary-dark, #0056b3);
+  transform: translateY(-1px);
+}
+
+.quickStats {
+  margin-top: 2rem;
+}
+
+.quickStats h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary, var(--primary, #222));
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.statCard {
+  background: var(--color-surface, var(--surface, #f9f9f9));
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary, var(--primary, #007bff));
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, var(--text-secondary, #666));
+  font-weight: 500;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.75rem;
+    margin: 1rem auto;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .reportCards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .reportCard {
+    padding: 1rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .statCard {
+    padding: 1rem;
+  }
+  
+  .statValue {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .reportCard {
+    padding: 0.75rem;
+  }
+  
+  .cardHeader h3 {
+    font-size: 1.1rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cardButton {
+    width: 100%;
+    text-align: center;
+  }
+}

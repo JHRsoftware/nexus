@@ -1,0 +1,3 @@
+{
+  "/api/shops/update-credit-limit/route": "app/api/shops/update-credit-limit/route.js"
+}

@@ -1,0 +1,802 @@
+/* Order Creation Page Styles - Mobile-First Responsive Design */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.backButton:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  transform: translateX(-2px);
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--color-textSecondary);
+  font-size: 1rem;
+}
+
+/* Form Layout */
+.orderForm {
+  background-color: var(--color-surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Basic Information Section */
+.section {
+  background-color: var(--color-background);
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.input, .select, .textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primaryAlpha);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Search Input Styling */
+.searchContainer {
+  position: relative;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem;
+  padding-right: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-textSecondary);
+  font-size: 1rem;
+}
+
+.searchResults {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.searchResult {
+  padding: 0.75rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease;
+}
+
+.searchResult:hover {
+  background-color: var(--color-primaryAlpha);
+}
+
+.searchResult:last-child {
+  border-bottom: none;
+}
+
+.resultName {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.resultDetails {
+  font-size: 0.85rem;
+  color: var(--color-textSecondary);
+  margin-top: 0.25rem;
+}
+
+/* Products Section */
+.productsSection {
+  margin-top: 2rem;
+}
+
+.productSearch {
+  margin-bottom: 1.5rem;
+}
+
+.addedProducts {
+  margin-top: 1rem;
+}
+
+.productItem {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.productHeader {
+  display: flex;
+  justify-content: between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.productInfo {
+  flex: 1;
+}
+
+.productName {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.productCode {
+  font-size: 0.85rem;
+  color: var(--color-textSecondary);
+  margin-bottom: 0.25rem;
+}
+
+.productStock {
+  font-size: 0.8rem;
+  color: var(--color-success);
+}
+
+.removeButton {
+  padding: 0.5rem;
+  background-color: var(--color-error);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  min-width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.removeButton:hover {
+  background-color: #c82333;
+}
+
+.productInputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.inputLabel {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-textSecondary);
+}
+
+.productInput {
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.productInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primaryAlpha);
+}
+
+.productTotals {
+  background-color: var(--color-background);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.totalLabel {
+  color: var(--color-textSecondary);
+}
+
+.totalValue {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.totalPrice {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+}
+
+/* Order Summary */
+.summarySection {
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid var(--color-border);
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.summaryRow:last-child {
+  border-bottom: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.summaryLabel {
+  color: var(--color-text);
+}
+
+.summaryValue {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* Toggle Switch */
+.toggleField {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.toggleLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.toggleInput {
+  appearance: none;
+  width: 44px;
+  height: 24px;
+  background-color: var(--color-border);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggleInput:checked {
+  background-color: var(--color-primary);
+}
+
+.toggleInput::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.toggleInput:checked::after {
+  transform: translateX(20px);
+}
+
+/* Action Buttons */
+.actionSection {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitButton, .draftButton {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.submitButton {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--color-primaryHover);
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  background-color: var(--color-border);
+  cursor: not-allowed;
+  color: var(--color-textSecondary);
+}
+
+.draftButton {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.draftButton:hover:not(:disabled) {
+  background-color: var(--color-border);
+  transform: translateY(-1px);
+}
+
+/* Messages */
+.message {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.loading {
+  text-align: center;
+  color: var(--color-textSecondary);
+  font-style: italic;
+  padding: 2rem;
+}
+
+/* Responsive Design - Tablet */
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .formGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .field:nth-child(4n-3),
+  .field:nth-child(4n-2) {
+    grid-column: span 1;
+  }
+  
+  .productInputs {
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+  }
+  
+  .productItem {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  
+  .productHeader {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .actionSection {
+    justify-content: flex-end;
+  }
+}
+
+/* Responsive Design - Desktop */
+@media (min-width: 1024px) {
+  .container {
+    padding: 2.5rem;
+  }
+  
+  .formGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .summaryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .productInputs {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 2fr;
+  }
+}
+
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: var(--color-background);
+  }
+  
+  .toggleInput:checked::after {
+    background-color: #fff;
+  }
+  
+  .success {
+    background-color: #155724;
+    color: #d4edda;
+    border-color: #0f5132;
+  }
+  
+  .error {
+    background-color: #721c24;
+    color: #f8d7da;
+    border-color: #842029;
+  }
+}
+
+/* Credit Limit Display Styles */
+.creditLimitContainer {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.creditLimitTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.creditLimitGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.creditLimitItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.creditLimitItem:last-child {
+  border-bottom: none;
+}
+
+.creditLimitLabel {
+  font-size: 0.9rem;
+  color: var(--color-textSecondary);
+  font-weight: 500;
+}
+
+.creditLimitValue {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.positiveCredit {
+  color: var(--color-success);
+}
+
+.negativeCredit {
+  color: var(--color-error);
+}
+
+/* Responsive adjustments for credit limit */
+@media (min-width: 768px) {
+  .creditLimitGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .creditLimitItem {
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: none;
+    border-right: 1px solid var(--color-border);
+    padding: 0.5rem;
+  }
+  
+  .creditLimitItem:last-child {
+    border-right: none;
+  }
+  
+  .creditLimitLabel {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Overdue Payments Alert Styles */
+.overdueWarning {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 3px solid #f87171;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(220, 38, 38, 0.25);
+  animation: pulseWarning 3s infinite;
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.overdueWarning::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%);
+}
+
+@keyframes pulseWarning {
+  0%, 100% {
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.25);
+    border-color: #f87171;
+  }
+  50% {
+    box-shadow: 0 12px 40px rgba(220, 38, 38, 0.4);
+    border-color: #dc2626;
+  }
+}
+
+.overdueWarningTitle {
+  color: #991b1b;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #dc2626;
+  padding-bottom: 0.5rem;
+}
+
+.overdueWarningText {
+  color: #7f1d1d;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.overduePaymentsList {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 2px solid #fca5a5;
+  box-shadow: inset 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+.overduePaymentItem {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(254, 202, 202, 0.3) 100%);
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+.overduePaymentItem:last-child {
+  margin-bottom: 0;
+}
+
+.overduePaymentItem:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  border-color: #dc2626;
+}
+
+.overdueInvoiceNumber {
+  font-weight: 700;
+  color: #991b1b;
+  font-size: 0.9rem;
+}
+
+.overdueDueDate {
+  color: #7f1d1d;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.overdueAmount {
+  color: #991b1b;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.overdueDays {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background: rgba(220, 38, 38, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #fca5a5;
+  display: inline-block;
+}
+
+.overdueTotal {
+  background: rgba(220, 38, 38, 0.1);
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-weight: 800;
+  color: #991b1b;
+  text-align: center;
+  font-size: 1rem;
+  text-shadow: 0 1px 2px rgba(220, 38, 38, 0.3);
+}
+
+/* Responsive adjustments for overdue payments */
+@media (min-width: 768px) {
+  .overduePaymentItem {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: center;
+  }
+  
+  .overdueAmount {
+    text-align: right;
+  }
+  
+  .overdueDays {
+    text-align: center;
+  }
+}

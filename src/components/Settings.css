@@ -1,0 +1,250 @@
+.settings-container {
+  width: 100%;
+}
+
+.settings-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: none;
+  border: none;
+  color: var(--color-text, #bdc3c7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.settings-toggle:hover {
+  background-color: var(--color-surface, #34495e);
+  color: var(--color-text, #ecf0f1);
+}
+
+.settings-icon {
+  font-size: 1.2rem;
+  min-width: 20px;
+}
+
+.settings-text {
+  flex: 1;
+  margin-left: 12px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.settings-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.settings-arrow.open {
+  transform: rotate(180deg);
+}
+
+.settings-panel {
+  background: var(--color-surface, #34495e);
+  border-top: 1px solid var(--color-border, #2c3e50);
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-section {
+  padding: 1rem;
+}
+
+.settings-title {
+  color: var(--color-text, #ecf0f1);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.setting-item {
+  margin-bottom: 1.5rem;
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-textSecondary, #bdc3c7);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Toggle Switch */
+.toggle-container {
+  position: relative;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle-input:checked + .toggle-slider {
+  background-color: var(--color-primary, #3498db);
+}
+
+.toggle-input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+/* Color Schemes */
+.color-schemes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.color-scheme-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  background: var(--color-background, rgba(255, 255, 255, 0.1));
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-textSecondary, #bdc3c7);
+  font-size: 0.8rem;
+}
+
+.color-scheme-btn:hover {
+  background: var(--color-background, rgba(255, 255, 255, 0.2));
+}
+
+.color-scheme-btn.active {
+  border-color: var(--color-primary, #3498db);
+  background: var(--color-background, rgba(52, 152, 219, 0.2));
+}
+
+.color-preview {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 0.25rem;
+}
+
+.color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.2));
+}
+
+.scheme-name {
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+/* Theme Info */
+.theme-info {
+  background: var(--color-background, rgba(0, 0, 0, 0.2));
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+}
+
+.theme-info h4 {
+  color: var(--color-text, #ecf0f1);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.theme-name {
+  color: var(--color-textSecondary, #bdc3c7);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.theme-colors {
+  display: flex;
+  gap: 4px;
+}
+
+.theme-color-sample {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.2));
+}
+
+.custom-color-info {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+}
+
+.custom-color-label {
+  color: var(--color-textSecondary, #bdc3c7);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.custom-color-value {
+  color: var(--color-text, #ecf0f1);
+  font-size: 0.75rem;
+  font-family: monospace;
+  background: var(--color-background, rgba(0, 0, 0, 0.2));
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .color-schemes {
+    grid-template-columns: 1fr;
+  }
+  
+  .color-scheme-btn {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .scheme-name {
+    font-size: 0.8rem;
+  }
+}

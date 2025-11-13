@@ -1,0 +1,514 @@
+/* Sales Rep Management Page Styles */
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background: var(--color-background, var(--background, #fff));
+  color: var(--color-text, var(--text, #333));
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary, var(--primary, #222));
+  text-align: center;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.buttonGroup button {
+  flex: 1;
+}
+
+.primary-action {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(79,172,254,0.12);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.primary-action:hover:not(:disabled) {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  box-shadow: 0 4px 16px rgba(67,233,123,0.18);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.secondary {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(118,75,162,0.12);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.secondary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #a4508b 0%, #5f0a87 100%);
+  box-shadow: 0 4px 16px rgba(164,80,139,0.18);
+  transform: translateY(-2px) scale(1.03);
+}
+
+
+.error {
+  color: var(--color-danger, var(--danger, #dc3545));
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(220, 53, 69, 0.1);
+  border-radius: 6px;
+  border-left: 4px solid var(--color-danger, var(--danger, #dc3545));
+}
+
+.success {
+  color: var(--color-success, var(--success, #28a745));
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(40, 167, 69, 0.1);
+  border-radius: 6px;
+  border-left: 4px solid var(--color-success, var(--success, #28a745));
+}
+
+.subtitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  color: var(--color-primary, var(--primary, #222));
+  text-align: center;
+}
+
+.salesRepsList {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.salesRepItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.salesRepItem {
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: var(--color-surface, var(--surface, #f9f9f9));
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.salesRepItem:hover {
+  border-color: var(--color-primary, var(--primary, #007bff));
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+.viewMode {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.salesRepInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nameRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.salesRepName {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--color-text, var(--text, #333));
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status.active {
+  background: rgba(40, 167, 69, 0.15);
+  color: var(--color-success, var(--success, #28a745));
+  border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.status.deactive {
+  background: rgba(220, 53, 69, 0.15);
+  color: var(--color-danger, var(--danger, #dc3545));
+  border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.contactRow, .remarkRow {
+  margin: 0.25rem 0;
+}
+
+.contactNumber {
+  color: var(--color-primary, var(--primary, #007bff));
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.remark {
+  color: var(--color-text-secondary, var(--text-secondary, #666));
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border, var(--border, #eee));
+  font-size: 0.85rem;
+}
+
+.createdBy {
+  color: var(--color-text-secondary, var(--text-secondary, #666));
+  font-weight: 500;
+}
+
+.createdAt {
+  color: var(--color-text-secondary, var(--text-secondary, #999));
+}
+
+.salesRepActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-self: flex-start;
+}
+
+.editBtn, .deleteBtn, .saveBtn, .cancelBtn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.editBtn {
+  background: var(--color-primary, var(--primary, #007bff));
+  color: var(--color-text-inverse, white);
+}
+
+.editBtn:hover {
+  background: var(--color-primary-dark, #0056b3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.deleteBtn {
+  background: var(--color-danger, var(--danger, #dc3545));
+  color: var(--color-text-inverse, white);
+}
+
+.deleteBtn:hover {
+  background: var(--color-danger-dark, #c82333);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.saveBtn {
+  background: var(--color-success, var(--success, #28a745));
+  color: var(--color-text-inverse, white);
+}
+
+.saveBtn:hover {
+  background: var(--color-success-dark, #1e7e34);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.cancelBtn {
+  background: var(--color-secondary, var(--secondary, #6c757d));
+  color: var(--color-text-inverse, white);
+}
+
+.cancelBtn:hover {
+  background: var(--color-secondary-dark, #545b62);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(108, 117, 125, 0.3);
+}
+
+.editMode {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.editFormRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.editInput {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 6px;
+  font-size: 1rem;
+  background: var(--color-surface, var(--surface, #fff));
+  color: var(--color-text, var(--text, #333));
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.editInput:focus {
+  border-color: var(--color-primary, var(--primary, #0070f3));
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,112,243,0.1);
+}
+
+.editButtons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-text-secondary, var(--text-secondary, #666));
+  font-size: 1.1rem;
+}
+
+.emptyState p {
+  margin: 0;
+  font-style: italic;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+    margin: 1rem auto;
+    border-radius: 8px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 1.15rem;
+    margin: 1.5rem 0 0.75rem 0;
+  }
+  
+  .formRow, .editFormRow {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .buttonGroup {
+    flex-direction: column;
+  }
+  
+  .viewMode {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .nameRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .salesRepActions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .editBtn, .deleteBtn, .saveBtn, .cancelBtn {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+    min-width: 80px;
+  }
+  
+  .metaRow {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .salesRepItem {
+    padding: 1.25rem;
+  }
+  
+  .editButtons {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.75rem;
+    margin: 0.5rem auto;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin: 1rem 0 0.5rem 0;
+  }
+  
+  .salesRepItem {
+    padding: 1rem;
+  }
+  
+  .salesRepName {
+    font-size: 1.1rem;
+  }
+  
+  .salesRepActions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .editBtn, .deleteBtn, .saveBtn, .cancelBtn {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+    min-width: 70px;
+  }
+  
+  .status {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .contactNumber, .remark {
+    font-size: 0.9rem;
+  }
+  
+  .metaRow {
+    font-size: 0.8rem;
+  }
+  
+  .editInput, .textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .emptyState {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* High contrast theme support */
+@media (prefers-contrast: high) {
+  .salesRepItem {
+    border-width: 2px;
+  }
+  
+  .status {
+    border-width: 2px;
+  }
+  
+  .editBtn, .deleteBtn, .saveBtn, .cancelBtn {
+    border: 2px solid transparent;
+  }
+  
+  .editBtn:focus, .deleteBtn:focus, .saveBtn:focus, .cancelBtn:focus {
+    outline: 2px solid var(--color-text, #000);
+    outline-offset: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .salesRepItem, .editBtn, .deleteBtn, .saveBtn, .cancelBtn {
+    transition: none;
+  }
+  
+  .salesRepItem:hover {
+    transform: none;
+  }
+  
+  .editBtn:hover, .deleteBtn:hover, .saveBtn:hover, .cancelBtn:hover {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .salesRepActions, .editButtons, .buttonGroup {
+    display: none;
+  }
+  
+  .salesRepItem {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

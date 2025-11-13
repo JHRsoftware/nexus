@@ -1,0 +1,2311 @@
+/* Invoice Management Page Styles - Professional & Mobile Responsive */
+
+/* Professional Invoice Styles - Using Theme Context Variables */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Enhanced responsive design */
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 3rem;
+  }
+}
+
+/* Theme variables are set by ThemeContext */
+
+/* Professional Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Custom Layout Styles for Invoice Type + Notes Row */
+.invoiceTypeNotesRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .invoiceTypeNotesRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .invoiceTypeNotesRow {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Product Search Row - Side by Side Layout */
+.productSearchRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .productSearchRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 767px) {
+  .invoiceTypeNotesRow {
+    gap: 1rem;
+  }
+  
+  .productSearchRow {
+    gap: 1rem;
+  }
+  
+  .notesInput {
+    min-height: 40px;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+  }
+  
+  .field {
+    gap: 0.5rem;
+  }
+  
+  .label {
+    font-size: 0.75rem;
+  }
+}
+
+/* Notes Input Styling with Enhanced Theme Support */
+.notesInput {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-border, #e5e7eb);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: var(--color-surface, #f8f9fa);
+  color: var(--color-text, #1f2937);
+  transition: all 0.3s ease;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.notesInput:focus {
+  outline: none;
+  border-color: var(--color-primary, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: var(--color-inputFocusBackground, #f1f3f4);
+}
+
+.notesInput:hover {
+  border-color: var(--color-primary-light, #60a5fa);
+}
+
+.notesInput::placeholder {
+  color: var(--color-textSecondary, #6b7280);
+  opacity: 0.7;
+}
+
+/* Dark Mode Support for New Elements */
+.container.dark .notesInput {
+  background: var(--color-inputBackground-dark, #374151);
+  border-color: var(--color-border-dark, #4b5563);
+  color: var(--color-text-dark, #f9fafb);
+}
+
+.container.dark .notesInput:focus {
+  background: var(--color-inputFocusBackground-dark, #374151);
+  border-color: var(--color-primary, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.container.dark .notesInput::placeholder {
+  color: var(--color-textSecondary-dark, #9ca3af);
+}
+
+/* Loading States */
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Mobile-First Enhancements */
+@media (max-width: 767px) {
+  .container {
+    padding: 0.75rem;
+    margin: 0;
+  }
+  
+  .form {
+    padding: 1rem;
+    border-radius: var(--radius-md);
+  }
+  
+  .row {
+    gap: 1rem;
+  }
+  
+  .input, .select {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Professional Header with Mobile Support */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary, #3b82f6) 0%, var(--color-primary-dark, #2563eb) 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #ffffff, #e2e8f0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2rem;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+.clearButton {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clearButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 768px) {
+  .clearButton {
+    width: auto;
+    min-width: 140px;
+  }
+}
+
+/* Professional Form Styles */
+.form {
+  background: var(--color-surface);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.form:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .form {
+    padding: 2.5rem;
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #000000; /* Full black - will be overridden by global dark mode styles */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.label::after {
+  content: '*';
+  color: var(--color-error);
+  margin-left: 4px;
+  font-weight: 700;
+}
+
+.input {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primaryAlpha);
+  transform: translateY(-1px);
+}
+
+.input:hover {
+  border-color: var(--color-border);
+}
+
+.textarea {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  resize: vertical;
+  min-height: 80px;
+}
+
+.textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primaryAlpha);
+  transform: translateY(-1px);
+}
+
+.textarea:hover {
+  border-color: var(--color-border);
+}
+
+.select {
+  padding: 1rem 3rem 1rem 1.25rem;
+  font-size: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.select:focus {
+  border-color: var(--color-primary, var(--primary, #007bff));
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+  background-color: var(--color-background, var(--background, #fff));
+}
+
+.select:hover {
+  border-color: var(--color-primary-light, rgba(0, 123, 255, 0.3));
+  background-color: var(--color-background, var(--background, #fff));
+}
+
+.select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--color-surface-muted, #f5f5f5);
+  color: var(--color-text-muted, var(--text-muted, #666));
+}
+
+/* Select options styling */
+.select option {
+  padding: 0.5rem;
+  background: var(--color-surface, var(--surface, #fff));
+  color: var(--color-text, var(--text, #333));
+  font-weight: 500;
+}
+
+.select option:hover,
+.select option:checked {
+  background: var(--color-primary-light, rgba(0, 123, 255, 0.1));
+  color: var(--color-primary, var(--primary, #007bff));
+}
+
+/* Date Input Styling */
+.input[placeholder="DD/MM/YYYY"] {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.input[placeholder="DD/MM/YYYY"]::placeholder {
+  color: var(--color-text-muted, var(--text-muted, #999));
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.input[placeholder="DD/MM/YYYY"]:focus::placeholder {
+  opacity: 0.4;
+}
+
+/* Date validation styling */
+.input[placeholder="DD/MM/YYYY"]:invalid {
+  border-color: var(--color-warning, #ffc107);
+  background-color: rgba(255, 193, 7, 0.05);
+}
+
+.input[placeholder="DD/MM/YYYY"]:not(:placeholder-shown):valid {
+  border-color: var(--color-success, #28a745);
+  background-color: rgba(40, 167, 69, 0.05);
+}
+
+/* Search Container */
+.searchContainer {
+  position: relative;
+}
+
+.clearSelection {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-danger, var(--danger, #dc3545));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.clearSelection:hover {
+  background: var(--color-danger-dark, #c82333);
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-surface, var(--surface, #fff));
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 0.25rem;
+}
+
+.dropdownItem {
+  padding: 0.875rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border, var(--border, #eee));
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.dropdownItem:hover {
+  background: var(--color-primary-light, rgba(0, 123, 255, 0.05));
+  transform: translateX(2px);
+}
+
+.dropdownItem:last-child {
+  border-bottom: none;
+}
+
+.shopInfo, .productInfo, .orderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.shopName, .productName {
+  font-weight: 600;
+  color: var(--color-text, var(--text, #333));
+  margin-bottom: 0.25rem;
+}
+
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+}
+
+.orderInfo strong {
+  color: var(--color-primary, #007bff);
+  font-size: 0.95rem;
+}
+
+.orderDate, .orderTotal {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #666);
+  font-weight: 500;
+}
+
+.orderTotal {
+  color: var(--color-success, #28a745);
+  font-weight: 600;
+}
+
+.orderNotes {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #666);
+  font-style: italic;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shopOwner, .productDetails {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, var(--text-muted, #666));
+  display: flex;
+  gap: 1rem;
+}
+
+/* Sales Rep Dropdown Styles */
+.repName {
+  font-weight: 600;
+  color: var(--color-text, var(--text, #333));
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.repContact {
+  font-size: 0.85rem;
+  color: var(--color-primary, var(--primary, #007bff));
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.productCode {
+  display: inline-block;
+  background: var(--color-primary-light, rgba(0, 123, 255, 0.1));
+  color: var(--color-primary, var(--primary, #007bff));
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.productTitle {
+  font-weight: 600;
+}
+
+/* Product Search Section */
+.productSearchSection {
+  margin-bottom: 2rem;
+}
+
+/* Items Section */
+.itemsSection {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--color-border-light, rgba(0, 0, 0, 0.1));
+}
+
+.container.dark .itemsSection {
+  border-top-color: var(--color-border-dark, rgba(255, 255, 255, 0.1));
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary, var(--primary, #007bff));
+  margin-bottom: 1rem;
+}
+
+/* Items Table */
+.itemsTable {
+  background: var(--color-surface, var(--surface, #fff));
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.itemsHeader {
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.8fr 1.2fr 1fr 1.2fr 1.2fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-primary, var(--primary, #007bff));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.itemsBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.8fr 1.2fr 1fr 1.2fr 1.2fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border, var(--border, #eee));
+  align-items: center;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: var(--color-text, var(--text, #333));
+}
+
+.itemRow:hover {
+  background: var(--color-primary-light, rgba(0, 123, 255, 0.03));
+}
+
+.itemRow:last-child {
+  border-bottom: none;
+}
+
+.quantityInput,
+.priceInput,
+.discountInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+  background: var(--color-background, var(--background, #fff)) !important;
+  color: var(--color-text, var(--text, #333)) !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.quantityError {
+  border-color: var(--color-error, #e74c3c) !important;
+  background-color: rgba(231, 76, 60, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2) !important;
+}
+
+.quantityInput:focus,
+.priceInput:focus,
+.discountInput:focus {
+  outline: none;
+  border-color: var(--color-primary, var(--primary, #007bff)) !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2) !important;
+  background: var(--color-background, var(--background, #fff)) !important;
+  color: var(--color-text, var(--text, #333)) !important;
+  transform: scale(1.02);
+}
+
+.container.dark .quantityInput:focus,
+.container.dark .priceInput:focus,
+.container.dark .discountInput:focus {
+  background: var(--color-surface-dark, var(--surface-dark, #2d3748)) !important;
+  color: var(--color-text-dark, var(--text-dark, #e2e8f0)) !important;
+  border-color: var(--color-primary, var(--primary, #007bff)) !important;
+}
+
+.removeButton {
+  padding: 0.4rem 0.8rem;
+  background: var(--color-danger, var(--danger, #dc3545));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.removeButton:hover {
+  background: var(--color-danger-dark, #c82333);
+  transform: translateY(-1px);
+}
+
+/* Table cell text colors */
+.productCode,
+.productName,
+.quantity,
+.sellingPrice,
+.discount,
+.price,
+.totalPrice {
+  color: var(--color-text, var(--text, #333)) !important;
+  font-weight: 500;
+}
+
+.price,
+.totalPrice {
+  font-weight: 600;
+  color: var(--color-success, var(--success, #28a745)) !important;
+}
+
+/* Totals Section */
+.totalsSection {
+  background: var(--color-surface, var(--surface, #f8f9fa));
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.totalsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin-left: auto;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border, var(--border, #eee));
+  font-weight: 500;
+  color: var(--color-text, var(--text, #333));
+}
+
+.totalRow:last-child {
+  border-bottom: none;
+}
+
+.netTotal {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary, var(--primary, #007bff));
+  border-top: 2px solid var(--color-primary, var(--primary, #007bff));
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.profitRow {
+  background: var(--color-success-light, rgba(40, 167, 69, 0.1));
+  padding: 1rem;
+  border-radius: 6px;
+  border: 2px solid var(--color-success, var(--success, #28a745));
+  margin-top: 0.5rem;
+}
+
+.profitRow span {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.cashDiscountLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary, var(--primary, #007bff));
+}
+
+/* Submit Section */
+.submitSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border, var(--border, #ddd));
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, var(--color-primary, #3b82f6), var(--color-primary-dark, #2563eb));
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--color-primary-dark, #2563eb), var(--color-primary, #3b82f6));
+  transform: translateY(-3px);
+  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.4);
+}
+
+.submitButton:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: var(--color-muted, #9ca3af);
+}
+
+@media (min-width: 768px) {
+  .submitButton {
+    width: auto;
+    min-width: 200px;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Invoices List Section */
+.invoicesList {
+  margin-top: 3rem;
+}
+
+.invoicesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white !important;
+  margin: 0;
+}
+
+.loadButton {
+  padding: 0.75rem 1.5rem;
+  background: var(--color-success, #28a745);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loadButton:hover:not(:disabled) {
+  background: var(--color-success-dark, #218838);
+  transform: translateY(-1px);
+}
+
+.loadButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Invoices Table */
+.invoicesTable {
+  background: var(--color-surface, var(--surface, #ffffff));
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.container.dark .invoicesTable {
+  background: var(--color-surface-dark, var(--surface-dark, #2d3748));
+}
+
+.tableHeader {
+  display: none;
+  grid-template-columns: 1.5fr 1fr 2fr 0.8fr 1.2fr 1fr 1fr 1fr;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--color-primary, #3b82f6), var(--color-primary-dark, #2563eb));
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+@media (min-width: 1024px) {
+  .tableHeader {
+    display: grid;
+  }
+}
+
+.tableBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border-light, rgba(203, 213, 225, 0.5));
+  background: var(--color-surface, #ffffff);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* .tableRow:hover {
+  background: var(--color-hover, rgba(59, 130, 246, 0.02));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+} */
+
+@media (min-width: 1024px) {
+  .tableRow {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 2fr 0.8fr 1.2fr 1fr 1fr 1fr;
+    gap: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  /* .tableRow:hover {
+    transform: none;
+    box-shadow: none;
+  } */
+}
+
+.container.dark .tableRow {
+  border-bottom-color: var(--color-border-dark, rgba(255, 255, 255, 0.1));
+}
+
+/* .container.dark .tableRow:hover {
+  background: rgba(255, 255, 255, 0.02);
+} */
+
+.invoiceNumber {
+  font-weight: 600;
+  color: var(--color-primary, var(--primary, #007bff));
+}
+
+.notes {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #6b7280);
+  font-style: italic;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: help;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.viewButton {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-info, #17a2b8);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewButton:hover {
+  background: var(--color-info-dark, #138496);
+  transform: translateY(-1px);
+}
+
+.printButton {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-success, #28a745);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.printButton:hover {
+  background: var(--color-success-dark, #218838);
+  transform: translateY(-1px);
+}
+
+/* Print Invoice Button for View Mode */
+.printInvoiceButton {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, var(--color-success, #28a745), var(--color-success-dark, #218838));
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 32px rgba(40, 167, 69, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.printInvoiceButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.printInvoiceButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--color-success-dark, #218838), var(--color-success, #28a745));
+  transform: translateY(-3px);
+  box-shadow: 0 12px 48px rgba(40, 167, 69, 0.4);
+}
+
+.printInvoiceButton:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.printInvoiceButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: var(--color-muted, #9ca3af);
+}
+
+/* Print Last Invoice Button - Next to Create Invoice Button */
+.printLastInvoiceButton {
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 32px rgba(23, 162, 184, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.printLastInvoiceButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.printLastInvoiceButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #138496, #17a2b8);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 48px rgba(23, 162, 184, 0.4);
+}
+
+.printLastInvoiceButton:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.printLastInvoiceButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: var(--color-muted, #9ca3af);
+}
+
+/* Mobile responsive styles for print buttons */
+@media (max-width: 767px) {
+  .printLastInvoiceButton {
+    margin-left: 0;
+    margin-top: 1rem;
+    width: 100%;
+    order: 2; /* Show below submit button on mobile */
+  }
+  
+  .submitButton {
+    order: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .printInvoiceButton {
+    width: auto;
+    min-width: 250px;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Messages */
+.error {
+  background: var(--color-danger-light, rgba(220, 53, 69, 0.1));
+  color: var(--color-danger, var(--danger, #dc3545));
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-danger-light, rgba(220, 53, 69, 0.2));
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.success {
+  background: var(--color-success-light, rgba(40, 167, 69, 0.1));
+  color: var(--color-success, var(--success, #28a745));
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-success-light, rgba(40, 167, 69, 0.2));
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.1rem;
+  color: var(--color-text-muted, var(--text-muted, #666));
+  font-weight: 500;
+}
+
+.accessDenied {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.1rem;
+  color: var(--color-danger, var(--danger, #dc3545));
+  font-weight: 600;
+}
+
+/* Dark Mode Specific Styles */
+.container.dark .itemRow {
+  color: var(--color-text-dark, #e2e8f0);
+}
+
+.container.dark .productCode,
+.container.dark .productName,
+.container.dark .quantity,
+.container.dark .sellingPrice,
+.container.dark .discount {
+  color: var(--color-text-dark, #e2e8f0) !important;
+}
+
+.container.dark .price,
+.container.dark .totalPrice {
+  color: var(--color-success-light, #68d391) !important;
+}
+
+.container.dark .quantityInput,
+.container.dark .priceInput,
+.container.dark .discountInput {
+  background: var(--color-surface-dark, var(--surface-dark, #2d3748)) !important;
+  color: var(--color-text-dark, var(--text-dark, #e2e8f0)) !important;
+  border-color: var(--color-border-dark, var(--border-dark, #4a5568)) !important;
+}
+
+/* Dark Mode Select Styling */
+.container.dark .select {
+  background: var(--color-surface-dark, var(--surface-dark, #2d3748));
+  color: var(--color-text-dark, var(--text-dark, #e2e8f0));
+  border-color: var(--color-border-dark, var(--border-dark, #4a5568));
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e2e8f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.container.dark .select:focus {
+  background: var(--color-surface-dark, var(--surface-dark, #2d3748));
+  border-color: var(--color-primary, var(--primary, #007bff));
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.3);
+}
+
+.container.dark .select:hover {
+  border-color: var(--color-primary-light, rgba(0, 123, 255, 0.5));
+  background: var(--color-surface-dark-hover, #374151);
+}
+
+.container.dark .select:disabled {
+  background-color: var(--color-surface-dark-muted, #1f2937);
+  color: var(--color-text-dark-muted, #6b7280);
+}
+
+.container.dark .select option {
+  background: var(--color-surface-dark, var(--surface-dark, #2d3748));
+  color: var(--color-text-dark, var(--text-dark, #e2e8f0));
+}
+
+.container.dark .select option:hover,
+.container.dark .select option:checked {
+  background: var(--color-primary-dark, rgba(0, 123, 255, 0.2));
+  color: var(--color-primary-light, #60a5fa);
+}
+
+/* Dark Mode Date Input Styling */
+.container.dark .input[placeholder="DD/MM/YYYY"]::placeholder {
+  color: var(--color-text-dark-muted, var(--text-dark-muted, #9ca3af));
+}
+
+.container.dark .input[placeholder="DD/MM/YYYY"]:invalid {
+  border-color: var(--color-warning, #fbbf24);
+  background-color: rgba(251, 191, 36, 0.1);
+}
+
+.container.dark .input[placeholder="DD/MM/YYYY"]:not(:placeholder-shown):valid {
+  border-color: var(--color-success, #10b981);
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .form {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .field {
+    gap: 0.25rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+
+  .input {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .select {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    padding-right: 2.25rem;
+    background-size: 0.9rem;
+  }
+
+  /* Mobile-friendly dropdowns */
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    max-height: 50vh;
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    margin-top: 0.25rem;
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #e5e7eb);
+  }
+
+  /* Ensure search container has proper relative positioning */
+  .searchContainer {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Active dropdown gets higher z-index */
+  .searchContainer:has(.dropdown) {
+    z-index: 10001;
+  }
+
+  /* Add backdrop for mobile dropdowns to prevent visual interference */
+  .dropdown::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    backdrop-filter: blur(1px);
+  }
+
+  /* Touch-friendly mobile improvements */
+  .dropdownItem {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
+  }
+
+  .shopInfo, .productInfo {
+    pointer-events: none; /* Prevent nested touch issues */
+  }
+
+  /* Improve mobile input focus */
+  .input:focus {
+    transform: none; /* Disable transform on mobile focus to prevent layout shifts */
+  }
+
+  .dropdownItem {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
+    background: var(--color-surface, #ffffff);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .dropdownItem:hover {
+    background: var(--color-primary-light, #f0f8ff);
+  }
+
+  .dropdownItem:active {
+    background: var(--color-primary, #3b82f6);
+    color: white;
+  }
+
+  /* Prevent body scroll when dropdown is open on mobile */
+  .searchContainer.dropdownOpen {
+    overflow: visible;
+  }
+
+  /* Mobile table layout */
+  .itemsTable {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .itemsHeader {
+    display: none; /* Hide header on mobile */
+  }
+
+  .itemRow {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid var(--color-border, var(--border-light, #e5e7eb));
+    border-radius: var(--border-radius, 0.75rem);
+    margin-bottom: 1rem;
+  background: var(--color-surface, var(--surface, #ffffff));
+  box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  /* Shop Details Mobile Styles */
+  .shopDetailsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .shopDetailItem {
+    padding: 1rem;
+  }
+
+  .shopDetailsTitle {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /* Overdue Payments Mobile Styles */
+  .overdueWarningCard {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .overdueWarningTitle {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .overduePaymentItem {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .overdueDays,
+  .overdueAmount {
+    text-align: center;
+  }
+
+  .overdueTotal {
+    font-size: 1.1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Shop Details Section */
+.shopDetailsSection {
+  margin: 2rem 0;
+}
+
+.shopDetailsCard {
+  background: linear-gradient(135deg, var(--color-surface, #f8fafc) 0%, var(--color-background, #ffffff) 100%);
+  border: 2px solid var(--color-primary, #007bff);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 123, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.shopDetailsCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary, #007bff) 0%, var(--color-secondary, #6c757d) 100%);
+}
+
+.shopDetailsCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 123, 255, 0.2);
+}
+
+.shopDetailsTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primary, #007bff);
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--color-primary, #007bff);
+  padding-bottom: 0.75rem;
+}
+
+.shopDetailsTitle::before {
+  content: '🏪';
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.shopDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Desktop specific styles to ensure proper display */
+@media (min-width: 769px) {
+  .shopDetailsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .shopDetailItem {
+    padding: 1.25rem;
+  }
+
+  .shopDetailsTitle {
+    text-align: left;
+    font-size: 1.4rem;
+  }
+
+  .overdueWarningTitle {
+    text-align: left;
+    font-size: 1.4rem;
+  }
+
+  .overduePaymentItem {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .overdueDays,
+  .overdueAmount {
+    text-align: initial;
+  }
+
+  .overdueTotal {
+    flex-direction: row;
+    gap: 0.75rem;
+    font-size: 1.3rem;
+  }
+}
+
+.shopDetailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, var(--color-background, #ffffff) 0%, var(--color-surface, #f8fafc) 100%);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.shopDetailItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-primary, #007bff) 0%, var(--color-secondary, #6c757d) 100%);
+  border-radius: 0 12px 12px 0;
+}
+
+.shopDetailItem:hover {
+  border-color: var(--color-primary, #007bff);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.detailLabel {
+  font-weight: 600;
+  color: var(--color-text-muted, #6b7280);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.detailValue {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text, var(--text-primary, #1f2937));
+  font-size: 0.95rem;
+}
+
+.availableCredit {
+  color: var(--color-success, var(--success, #10b981));
+  font-weight: 700;
+}
+
+.creditExceeded {
+  color: var(--color-danger, var(--danger, #dc3545));
+  font-weight: 700;
+}
+
+/* Overdue Payments Warning Styles */
+.overdueWarningSection {
+  margin: 1.5rem 0;
+}
+
+.overdueWarningCard {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 3px solid #f87171;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(220, 38, 38, 0.25);
+  animation: pulseWarning 3s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.overdueWarningCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%);
+}
+
+@keyframes pulseWarning {
+  0%, 100% {
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.25);
+    border-color: #f87171;
+  }
+  50% {
+    box-shadow: 0 12px 40px rgba(220, 38, 38, 0.4);
+    border-color: #dc2626;
+  }
+}
+
+.overdueWarningTitle {
+  color: #991b1b;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #dc2626;
+  padding-bottom: 0.75rem;
+}
+
+.overdueWarningMessage {
+  color: #7f1d1d;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.overduePaymentsList {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 2px solid #fca5a5;
+  box-shadow: inset 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+.overduePaymentItem {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(254, 202, 202, 0.3) 100%);
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+.overduePaymentItem:last-child {
+  margin-bottom: 0;
+}
+
+.overduePaymentItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  border-color: #dc2626;
+}
+
+.overdueInvoice {
+  font-weight: 700;
+  color: #991b1b;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.overdueInvoice::before {
+  content: '📄';
+  font-size: 1.1rem;
+}
+
+.overdueDays {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  background: rgba(220, 38, 38, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #fca5a5;
+}
+
+.overdueAmount {
+  color: #991b1b;
+  font-weight: 800;
+  text-align: right;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.overdueAmount::before {
+  content: '💰';
+  font-size: 1rem;
+}
+
+.overdueTotalSection {
+  background: linear-gradient(135deg, rgba(153, 27, 27, 0.15) 0%, rgba(220, 38, 38, 0.1) 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 2px solid #dc2626;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+  position: relative;
+}
+
+.overdueTotalSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.overdueTotal {
+  color: #991b1b;
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(153, 27, 27, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.overdueTotal::before {
+  content: '⚠️';
+  font-size: 1.4rem;
+}
+
+
+
+.itemRow > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border, var(--border-light, #e5e7eb));
+  }
+
+  .itemRow > div:last-child {
+    border-bottom: none;
+  }
+
+  .itemRow > div::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--color-text-muted, var(--text-muted, #666));
+    margin-right: 1rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Input controls in mobile */
+  .quantityInput,
+  .priceInput,
+  .discountInput {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: var(--border-radius, 0.375rem);
+    border: 1px solid var(--color-border, var(--border, #ddd));
+    background: var(--color-background, var(--background, #fff)) !important;
+    color: var(--color-text, var(--text, #333)) !important;
+    font-weight: 600;
+  }
+
+  /* Mobile buttons */
+  .removeButton {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    background-color: var(--color-danger, var(--danger, #dc3545));
+    color: white;
+  }
+
+  /* Shop details mobile */
+  .shopDetailsCard {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .shopDetailsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .shopDetailItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .detailLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .detailValue {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  /* Invoice list mobile */
+  .tableHeader {
+    display: none;
+  }
+
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border, var(--border-light, #e5e7eb));
+    border-radius: var(--border-radius, 0.75rem);
+    margin-bottom: 1rem;
+    background: var(--color-surface, var(--surface, #ffffff));
+  }
+
+  /* Totals section mobile */
+  .totalsGrid {
+    max-width: 100%;
+  }
+
+  .totalsSection {
+    padding: 1.5rem;
+  }
+
+  .totalRow {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .netTotal {
+    font-size: 1.1rem;
+  }
+
+  /* Header adjustments */
+  .invoicesHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+    color: white !important;
+  }
+
+  /* Search improvements */
+  .searchContainer {
+    position: relative;
+  }
+
+  .productSearchSection {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Button adjustments */
+  .submitButton {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .loadButton {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  .clearButton {
+    width: 100%;
+    text-align: center;
+  }
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .form {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .input {
+    padding: 0.625rem;
+  }
+
+  .dropdown {
+    left: 0.5rem;
+    right: 0.5rem;
+    border-radius: 8px;
+  }
+
+  .itemRow {
+    padding: 0.75rem;
+  }
+
+  .totalsSection {
+    padding: 1rem;
+  }
+
+  .submitButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Shop Details Small Screen */
+  .shopDetailsCard {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .shopDetailsTitle {
+    font-size: 1rem;
+  }
+
+  .detailLabel {
+    font-size: 0.8rem;
+  }
+
+  .detailValue {
+    font-size: 1rem;
+  }
+
+  /* Overdue Payments Small Screen */
+  .overdueWarningCard {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .overdueWarningTitle {
+    font-size: 1rem;
+  }
+
+  .overduePaymentsList {
+    padding: 1rem;
+  }
+
+  .overduePaymentItem {
+    padding: 0.75rem;
+  }
+
+  .overdueTotalSection {
+    padding: 1rem;
+  }
+
+  .overdueTotal {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .form {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .submitButton {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Show Orders Button Styles */
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.showOrdersButton {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.showOrdersButton:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.showOrdersButton:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.noOrdersMessage {
+  padding: 1rem;
+  text-align: center;
+  color: var(--color-text-muted, #666);
+  font-style: italic;
+  background: var(--color-background-light, #f8f9fa);
+  border-radius: 6px;
+  margin: 0.5rem 0;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .labelRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .showOrdersButton {
+    align-self: flex-end;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Invoices List Enhancements */
+.invoicesControls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.searchContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border, #ddd);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: var(--color-background, #fff);
+  color: var(--color-text, #333);
+}
+
+.searchButton {
+  padding: 0.5rem;
+  background: var(--color-primary, #007bff);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.searchButton:hover {
+  background: var(--color-primary-dark, #0056b3);
+}
+
+.searchButton:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Pagination Styles */
+.pagination {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--color-background-light, #f8f9fa);
+  border-radius: 8px;
+}
+
+.paginationInfo {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #666);
+}
+
+.paginationButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pageButton {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-background, #fff);
+  color: var(--color-text, #333);
+  border: 1px solid var(--color-border, #ddd);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  min-width: 40px;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: var(--color-primary, #007bff);
+  color: white;
+  border-color: var(--color-primary, #007bff);
+}
+
+.pageButton:disabled {
+  background: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+  border-color: #dee2e6;
+}
+
+.activePage {
+  background: var(--color-primary, #007bff) !important;
+  color: white !important;
+  border-color: var(--color-primary, #007bff) !important;
+  font-weight: 600;
+}
+
+.ellipsis {
+  padding: 0.5rem;
+  color: var(--color-text-muted, #666);
+  font-size: 0.875rem;
+}
+
+.noInvoices {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-muted, #666);
+  font-style: italic;
+}
+
+.viewButton {
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.viewButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.viewButton:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Mobile responsive adjustments for invoices */
+@media (max-width: 768px) {
+  .invoicesControls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchContainer {
+    min-width: auto;
+  }
+  
+  .paginationButtons {
+    gap: 0.25rem;
+  }
+  
+  .pageButton {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    min-width: 36px;
+  }
+}
+
+/* View Mode Styling */
+.viewModeLabel {
+  color: var(--color-text-muted, #666);
+  font-style: italic;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+}

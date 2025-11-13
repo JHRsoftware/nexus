@@ -1,0 +1,850 @@
+/* Login Page Styles */
+
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.backgroundPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, #ffffff 2px, transparent 2px);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  pointer-events: none;
+}
+
+.loginCard {
+  background: var(--color-background);
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 8px 35px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transform: translateY(8px);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: cardEntrance 0.6s cubic-bezier(.2,.9,.27,1) 0.1s forwards;
+}
+
+/* Header Styles */
+.loginHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.logoCircle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  pointer-events: none;
+}
+
+.logoInitial {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.logoTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logoText {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+.logoSubtext {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-textSecondary);
+  margin-top: -2px;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  color: var(--color-textSecondary);
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Error Banner */
+.errorBanner {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  color: var(--color-error);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideInDown 0.3s ease-out;
+}
+
+.errorIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Form Styles */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formLabel {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 1rem;
+  font-size: 1.1rem;
+  color: var(--color-textSecondary);
+  z-index: 2;
+}
+
+.formInput {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-height: 52px;
+  box-sizing: border-box;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+  transform: translateY(-1px);
+}
+
+.formInput::placeholder {
+  color: var(--color-textSecondary);
+}
+
+.formInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.inputError {
+  border-color: var(--color-error) !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-error-rgb), 0.1) !important;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--color-textSecondary);
+  transition: all 0.2s ease;
+  z-index: 2;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.togglePassword:hover {
+  color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.1);
+}
+
+.togglePassword:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.errorText {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Form Options */
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.checkboxText {
+  user-select: none;
+}
+
+.forgotPassword {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+  background: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.forgotPassword:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Submit Button */
+.submitButton {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 52px;
+  box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(var(--color-primary-rgb), 0.4);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.loadingSpinner {
+  animation: spin 1s linear infinite;
+  font-size: 1.2rem;
+}
+
+.submitIcon {
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.submitButton:hover:not(:disabled) .submitIcon {
+  transform: translateX(4px);
+}
+
+/* Demo Section */
+.demoSection {
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+.divider {
+  text-align: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.dividerText {
+  background: var(--color-background);
+  padding: 0 1rem;
+  font-size: 0.85rem;
+  color: var(--color-textSecondary);
+  font-weight: 500;
+  position: relative;
+}
+
+.demoButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.demoButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.demoButton:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.05);
+  transform: translateY(-1px);
+}
+
+.demoButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.demoIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.demoTitle {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  margin-bottom: 0.125rem;
+}
+
+.demoDesc {
+  font-size: 0.8rem;
+  color: var(--color-textSecondary);
+}
+
+/* Footer */
+.loginFooter {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.footerText {
+  color: var(--color-textSecondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.signupLink {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 0.5rem;
+  transition: all 0.2s ease;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.signupLink:hover:not(:disabled) {
+  text-decoration: underline;
+  background: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.signupLink:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contactInfo {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(var(--color-primary-rgb), 0.1);
+  border: 2px solid rgba(var(--color-primary-rgb), 0.2);
+  border-radius: 12px;
+  animation: slideInDown 0.3s ease-out;
+}
+
+.contactText {
+  color: var(--color-text);
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.contactText strong {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Card entrance animation */
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.002);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: none;
+  }
+}
+
+/* Logo entrance and subtle float */
+@keyframes logoEntrance {
+  from { opacity: 0; transform: translateY(-6px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes floatUpDown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* slow background pattern motion */
+@keyframes backgroundMove {
+  from { background-position: 0 0, 30px 30px; }
+  to { background-position: -60px -40px, 0px 0px; }
+}
+
+/* Apply animations */
+.backgroundPattern {
+  animation: backgroundMove 28s linear infinite;
+}
+
+.logoContainer {
+  opacity: 0;
+  transform-origin: center;
+  animation: logoEntrance 0.6s cubic-bezier(.2,.9,.27,1) 0.08s forwards;
+}
+
+.logoCircle {
+  animation: floatUpDown 6s ease-in-out infinite;
+}
+
+.formInput {
+  transition: box-shadow 240ms ease, border-color 240ms ease, transform 180ms ease;
+}
+
+.formInput:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(var(--color-primary-rgb), 0.08);
+}
+
+.submitButton {
+  transition: transform 220ms cubic-bezier(.2,.9,.27,1), box-shadow 220ms ease, filter 220ms ease;
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.01);
+  background-position: 100% 50%;
+  filter: saturate(1.03) drop-shadow(0 8px 20px rgba(var(--color-primary-rgb), 0.12));
+}
+
+/* Make interactive elements larger on touch devices */
+@media (max-width: 480px) {
+  .submitButton, .demoButton {
+    min-height: 56px;
+    padding: 0.95rem 1rem;
+  }
+  .formInput {
+    min-height: 54px;
+  }
+}
+
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .loginContainer {
+    padding: 1rem 0.5rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+  
+  .loginCard {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .logoCircle {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .logoInitial {
+    font-size: 1.5rem;
+  }
+  
+  .logoText {
+    font-size: 1.5rem;
+  }
+  
+  .logoSubtext {
+    font-size: 0.8rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .formInput {
+    font-size: 1rem;
+    min-height: 50px;
+    padding: 0.875rem 0.875rem 0.875rem 2.75rem;
+  }
+  
+  .inputIcon {
+    left: 0.875rem;
+    font-size: 1rem;
+  }
+  
+  .togglePassword {
+    right: 0.875rem;
+    font-size: 1.1rem;
+  }
+  
+  .submitButton {
+    min-height: 50px;
+    font-size: 0.95rem;
+  }
+  
+  .demoButtons {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .demoButton {
+    padding: 0.875rem;
+  }
+  
+  .formOptions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .checkboxLabel {
+    font-size: 0.85rem;
+  }
+  
+  .forgotPassword {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .loginContainer {
+    padding: 1rem 0.25rem;
+    padding-top: 1rem;
+  }
+  
+  .loginCard {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+  
+  .logoContainer {
+    gap: 0.75rem;
+  }
+  
+  .logoCircle {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .logoInitial {
+    font-size: 1.3rem;
+  }
+  
+  .logoText {
+    font-size: 1.25rem;
+  }
+  
+  .logoSubtext {
+    font-size: 0.75rem;
+  }
+  
+  .formInput {
+    min-height: 48px;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .inputIcon {
+    left: 0.75rem;
+    font-size: 0.95rem;
+  }
+  
+  .togglePassword {
+    right: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .submitButton {
+    min-height: 48px;
+    font-size: 0.9rem;
+    padding: 0.875rem 1rem;
+  }
+  
+  .demoSection {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  
+  .loginFooter {
+    margin-top: 1.5rem;
+  }
+  
+  .footerText {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .loginCard {
+    padding: 1rem 0.75rem;
+  }
+  
+  .formInput {
+    padding: 0.625rem 0.625rem 0.625rem 2.25rem;
+  }
+  
+  .inputIcon {
+    left: 0.625rem;
+  }
+  
+  .togglePassword {
+    right: 0.625rem;
+  }
+}
+
+/* Landscape Mobile Styles */
+@media (max-width: 768px) and (orientation: landscape) {
+  .loginContainer {
+    padding-top: 1rem;
+  }
+  
+  .loginCard {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .logo {
+    margin-bottom: 0.5rem;
+  }
+  
+  .loginHeader {
+    margin-bottom: 1.5rem;
+  }
+  
+  .demoSection {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .loginCard {
+    border: 2px solid var(--color-border);
+  }
+  
+  .formInput,
+  .submitButton,
+  .demoButton {
+    border-width: 2px;
+  }
+  
+  .errorBanner {
+    border-width: 2px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .formInput,
+  .submitButton,
+  .demoButton,
+  .togglePassword,
+  .forgotPassword,
+  .signupLink,
+  .loadingSpinner,
+  .submitIcon {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .submitButton:hover,
+  .demoButton:hover {
+    transform: none !important;
+  }
+  
+  .errorBanner {
+    animation: none !important;
+  }
+}
+
+/* Dark Mode Support (if implemented) */
+@media (prefers-color-scheme: dark) {
+  .loginContainer {
+    background: linear-gradient(135deg, #0f3460 0%, #0e4b99 50%, #2e8b57 100%);
+  }
+  
+  .backgroundPattern {
+    opacity: 0.05;
+  }
+}

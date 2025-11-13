@@ -1,0 +1,715 @@
+/* Discount Management Page Styles - Project Theme Integrated & Mobile Responsive */
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background: var(--color-background, var(--background, #fff));
+  color: var(--color-text, var(--text, #333));
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: all 0.3s ease;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary, var(--primary, #007bff));
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Header with Edit Mode */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.clearButton {
+  padding: 0.75rem 1.5rem;
+  background: var(--color-secondary, var(--secondary, #6c757d));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background: var(--color-secondary-dark, #5a6268);
+  transform: translateY(-1px);
+}
+
+/* Form Styles */
+.form {
+  background: var(--color-surface, var(--surface, #fafafa));
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, var(--border, #e0e0e0));
+  margin-bottom: 3rem;
+  transition: all 0.2s ease;
+}
+
+.form:hover {
+  border-color: var(--color-primary, var(--primary, #007bff));
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text, var(--text, #333));
+  margin: 0;
+}
+
+.input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.2s ease;
+  background: var(--color-surface, var(--surface, #fafafa));
+  color: var(--color-text, var(--text, #333));
+  font-family: inherit;
+}
+
+.input:focus {
+  border-color: var(--color-primary, var(--primary, #007bff));
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.input::placeholder {
+  color: var(--color-text-placeholder, #999);
+  font-style: italic;
+}
+
+/* Submit Section */
+.submitSection {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.submitButton {
+  padding: 0.875rem 2rem;
+  background: var(--color-primary, var(--primary, #007bff));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.submitButton:hover::before {
+  left: 100%;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--color-primary-dark, var(--primary-dark, #0056b3));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.submitButton:disabled {
+  background: var(--color-secondary, var(--secondary, #6c757d));
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+/* Messages */
+.success {
+  color: var(--color-success, var(--success, #28a745));
+  background: var(--color-success-light, rgba(40, 167, 69, 0.1));
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-success, var(--success, #28a745));
+  margin: 1rem 0;
+  text-align: center;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+.error {
+  color: var(--color-danger, var(--danger, #dc3545));
+  background: var(--color-danger-light, rgba(220, 53, 69, 0.1));
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-danger, var(--danger, #dc3545));
+  margin: 1rem 0;
+  text-align: center;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Discounts List Section */
+.discountsList {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--color-border, var(--border, #e0e0e0));
+}
+
+.discountsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-primary, var(--primary, #007bff));
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.searchSection {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.searchForm {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.searchInput {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.2s ease;
+  background: var(--color-surface, var(--surface, #fafafa));
+  color: var(--color-text, var(--text, #333));
+  min-width: 200px;
+}
+
+.searchInput:focus {
+  border-color: var(--color-primary, var(--primary, #007bff));
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.searchButton, .loadButton {
+  padding: 0.5rem 1rem;
+  background: var(--color-primary, var(--primary, #007bff));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.searchButton:hover:not(:disabled), .loadButton:hover:not(:disabled) {
+  background: var(--color-primary-dark, var(--primary-dark, #0056b3));
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.searchButton:disabled, .loadButton:disabled {
+  background: var(--color-secondary, var(--secondary, #6c757d));
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.discountsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.noDiscounts {
+  text-align: center;
+  color: var(--color-text-secondary, var(--text-secondary, #6c757d));
+  padding: 3rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  background: var(--color-surface-alt, var(--surface-alt, #f8f9fa));
+  border-radius: 8px;
+  border: 2px dashed var(--color-border, var(--border, #ddd));
+}
+
+/* Discounts Table */
+.discountsTable {
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-surface, var(--surface, #fafafa));
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-primary, var(--primary, #007bff));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border-light, rgba(0, 0, 0, 0.1));
+  align-items: center;
+  transition: all 0.2s ease;
+  color: var(--color-text, var(--text, #333));
+  background: var(--color-surface, var(--surface, #fafafa)) !important;
+}
+
+.tableRow:hover {
+  background: var(--color-primary-light, rgba(0, 123, 255, 0.1));
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.discountName {
+  font-weight: 600;
+  color: var(--color-primary, var(--primary, #007bff));
+}
+
+.percentage {
+  font-weight: 600;
+  color: var(--color-success, var(--success, #28a745));
+  font-size: 1.1rem;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status.active {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status.inactive {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.user {
+  color: var(--color-text-secondary, var(--text-secondary, #6c757d));
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.editButton {
+  padding: 0.4rem 0.8rem;
+  background: var(--color-warning, #ffc107);
+  color: #212529;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editButton:hover:not(:disabled) {
+  background: #e0a800;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.toggleButton {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggleButton.activate {
+  background: var(--color-success, #28a745);
+  color: var(--color-text-inverse, #fff);
+}
+
+.toggleButton.deactivate {
+  background: var(--color-secondary, #6c757d);
+  color: var(--color-text-inverse, #fff);
+}
+
+.toggleButton.activate:hover:not(:disabled) {
+  background: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.toggleButton.deactivate:hover:not(:disabled) {
+  background: #5a6268;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.deleteButton {
+  padding: 0.4rem 0.8rem;
+  background: var(--color-danger, var(--danger, #dc3545));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.deleteButton:hover:not(:disabled) {
+  background: var(--color-danger-dark, var(--danger-dark, #c82333));
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.editButton:disabled, .toggleButton:disabled, .deleteButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Protected discount styles */
+.disabledInput {
+  background-color: var(--color-surface-disabled, #f5f5f5) !important;
+  color: var(--color-text-disabled, #666) !important;
+  cursor: not-allowed !important;
+  border-color: var(--color-border-disabled, #ccc) !important;
+}
+
+.disabledInput:focus {
+  border-color: var(--color-border-disabled, #ccc) !important;
+  box-shadow: none !important;
+}
+
+.disabledButton {
+  background: var(--color-warning, #ffc107) !important;
+  color: var(--color-text-dark, #000) !important;
+  cursor: not-allowed !important;
+  opacity: 0.8 !important;
+}
+
+.disabledButton:hover {
+  background: var(--color-warning, #ffc107) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.pageBtn {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-surface, var(--surface, #fafafa));
+  color: var(--color-text, var(--text, #333));
+  border: 1px solid var(--color-border, var(--border, #ddd));
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  min-width: 40px;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background: var(--color-primary-light, rgba(0, 123, 255, 0.1));
+  border-color: var(--color-primary, var(--primary, #007bff));
+  color: var(--color-primary, var(--primary, #007bff));
+  transform: translateY(-1px);
+}
+
+.pageBtn.active {
+  background: var(--color-primary, var(--primary, #007bff));
+  color: var(--color-text-inverse, var(--text-inverse, #fff));
+  border-color: var(--color-primary, var(--primary, #007bff));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pageBtn:disabled {
+  background: var(--color-surface-alt, var(--surface-alt, #f8f9fa));
+  color: var(--color-text-secondary, var(--text-secondary, #6c757d));
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.paginationInfo {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--color-surface, var(--surface, #f8f9fa));
+  border: 1px solid var(--color-border, var(--border, #e9ecef));
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.paginationInfo p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text, var(--text, #333));
+  font-weight: 500;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 1rem 0.75rem;
+    margin: 1rem auto;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  
+  .clearButton {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+  
+  .form {
+    padding: 1.5rem;
+  }
+  
+  .row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .discountsHeader {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .searchSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchForm {
+    flex-direction: column;
+  }
+  
+  .searchInput {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .searchButton, .loadButton {
+    width: 100%;
+  }
+  
+  .tableHeader, .tableRow {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .tableHeader {
+    display: none; /* Hide header on mobile, show labels in rows */
+  }
+  
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border, var(--border, #ddd));
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    background: var(--color-surface, var(--surface, #fafafa)) !important;
+  }
+  
+  .tableRow > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .tableRow .discountName::before { content: 'Name: '; font-weight: 600; }
+  .tableRow .percentage::before { content: 'Percentage: '; font-weight: 600; }
+  .tableRow .status::before { content: 'Status: '; font-weight: 600; }
+  .tableRow .user::before { content: 'Created by: '; font-weight: 600; }
+  
+  .actions {
+    justify-content: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border-light, rgba(0, 0, 0, 0.1));
+    gap: 0.25rem;
+  }
+  
+  .actions::before {
+    display: none;
+  }
+  
+  .editButton, .toggleButton, .deleteButton {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    flex: 1;
+    min-width: 70px;
+  }
+  
+  .pagination {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .pageNumbers {
+    justify-content: center;
+  }
+  
+  .paginationInfo {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+  }
+  
+  .paginationInfo p {
+    font-size: 0.85rem;
+  }
+  
+  .submitButton {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.5rem;
+    margin: 0.5rem auto;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .form {
+    padding: 1rem;
+  }
+  
+  .input, .searchInput {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .editButton, .deleteButton {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .actions {
+    gap: 0.25rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .container {
+    --color-background: #1a1a1a;
+    --color-text: #ffffff;
+    --color-surface: #2d2d2d;
+    --color-surface-alt: #363636;
+    --color-border: #404040;
+    --color-border-light: rgba(255, 255, 255, 0.1);
+  }
+}

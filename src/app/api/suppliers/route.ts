@@ -1,0 +1,192 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/database';
+
+// GET suppliers with pagination
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const page = parseInt(searchParams.get('page') || '1');
+    const limit = parseInt(searchParams.get('limit') || '10');
+    const search = searchParams.get('search') || '';
+    
+    // Calculate offset
+    const offset = (page - 1) * limit;
+    
+    // Build where clause for search
+    const whereClause = search ? {
+      OR: [
+        { supplierName: { contains: search, mode: 'insensitive' as const } },
+        { email: { contains: search, mode: 'insensitive' as const } },
+        { contactNumber: { contains: search, mode: 'insensitive' as const } },
+        { address: { contains: search, mode: 'insensitive' as const } }
+      ]
+    } : {};
+
+    // Get total count for pagination info
+    const totalCount = await prisma.supplier.count({
+      where: whereClause
+    });
+
+    // Get suppliers with pagination
+    const suppliers = await prisma.supplier.findMany({
+      where: whereClause,
+      orderBy: {
+        createdAt: 'desc'
+      },
+      skip: offset,
+      take: limit
+    });
+
+    const totalPages = Math.ceil(totalCount / limit);
+
+    return NextResponse.json({
+      suppliers,
+      pagination: {
+        currentPage: page,
+        totalPages,
+        totalCount,
+        hasNext: page < totalPages,
+        hasPrev: page > 1
+      }
+    });
+
+  } catch (error) {
+    console.error('GET suppliers error:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch suppliers' },
+      { status: 500 }
+    );
+  }
+}
+
+// POST - Create supplier
+export async function POST(req: NextRequest) {
+  // Get user data from headers
+  const userHeader = req.headers.get('x-user-data');
+  
+  let sessionUserName = 'Default User'; // Fallback value
+  
+  console.log('User header received:', userHeader); // Debug log
+  
+  if (userHeader) {
+    try {
+      const userData = JSON.parse(userHeader);
+      console.log('Parsed user data:', userData); // Debug log
+      
+      // Use the actual logged-in user's name
+      sessionUserName = userData.name || userData.username || 'Unknown User';
+      console.log('✅ Using logged-in user:', sessionUserName); // Debug log
+    } catch (error) {
+      console.error('Error parsing user data:', error);
+    }
+  } else {
+    console.log('❌ No user logged in, using fallback'); // Debug log
+  }
+
+  try {
+    const { supplierName, address, contactNumber, email } = await req.json();
+    
+    // Validate required fields
+    if (!supplierName || !address || !contactNumber || !email) {
+      return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    }
+
+    // Check if email already exists
+    const existingSupplier = await prisma.supplier.findFirst({
+      where: { email }
+    });
+
+    if (existingSupplier) {
+      return NextResponse.json({ error: 'Email already exists' }, { status: 400 });
+    }
+
+    // Create new supplier
+    const newSupplier = await prisma.supplier.create({
+      data: {
+        supplierName: supplierName.trim(),
+        address: address.trim(),
+        contactNumber: contactNumber.trim(),
+        email: email.trim().toLowerCase(),
+        user: sessionUserName,
+      }
+    });
+
+    return NextResponse.json({ success: true, supplier: newSupplier });
+  } catch (error) {
+    console.error('Error creating supplier:', error);
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  }
+}
+
+// PUT - Update supplier
+export async function PUT(req: NextRequest) {
+  try {
+    const { id, supplierName, address, contactNumber, email } = await req.json();
+    
+    if (!id || !supplierName || !address || !contactNumber || !email) {
+      return NextResponse.json({ error: 'All fields including ID are required' }, { status: 400 });
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    }
+
+    // Check if email already exists for other suppliers
+    const existingSupplier = await prisma.supplier.findFirst({
+      where: {
+        email,
+        NOT: { id: parseInt(id) }
+      }
+    });
+
+    if (existingSupplier) {
+      return NextResponse.json({ error: 'Email already exists' }, { status: 400 });
+    }
+
+    // Update supplier
+    const updatedSupplier = await prisma.supplier.update({
+      where: { id: parseInt(id) },
+      data: {
+        supplierName: supplierName.trim(),
+        address: address.trim(),
+        contactNumber: contactNumber.trim(),
+        email: email.trim().toLowerCase(),
+      }
+    });
+
+    return NextResponse.json({ success: true, supplier: updatedSupplier });
+  } catch (error) {
+    console.error('Error updating supplier:', error);
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  }
+}
+
+// DELETE - Delete supplier
+export async function DELETE(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json({ error: 'Supplier ID is required' }, { status: 400 });
+    }
+
+    // Delete supplier
+    await prisma.supplier.delete({
+      where: { id: parseInt(id) }
+    });
+
+    return NextResponse.json({ success: true, message: 'Supplier deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting supplier:', error);
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  }
+}

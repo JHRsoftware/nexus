@@ -1,0 +1,329 @@
+.color-picker-container {
+  margin: 1rem 0;
+}
+
+.color-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.color-picker-label {
+  color: var(--color-textSecondary, #bdc3c7);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.color-picker-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--color-background, rgba(255, 255, 255, 0.1));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.2));
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-text, white);
+}
+
+.color-picker-toggle:hover {
+  background: var(--color-surface, rgba(255, 255, 255, 0.15));
+  transform: translateY(-1px);
+}
+
+.current-color-preview {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border, rgba(255, 255, 255, 0.3));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.picker-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.picker-arrow.open {
+  transform: rotate(180deg);
+}
+
+.color-picker-panel {
+  background: var(--color-surface, #34495e);
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.2s ease;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Color Palette Section */
+.color-palette-section {
+  margin-bottom: 1rem;
+}
+
+.palette-title,
+.custom-title,
+.recent-title {
+  color: var(--color-text, #ecf0f1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.color-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.palette-color {
+  width: 28px;
+  height: 28px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.palette-color:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: var(--color-border, rgba(255, 255, 255, 0.5));
+}
+
+.palette-color.selected {
+  border-color: var(--color-text, white);
+  box-shadow: 0 0 0 2px var(--color-background, rgba(255, 255, 255, 0.3));
+  transform: scale(1.05);
+}
+
+.palette-color.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Custom Color Section */
+.custom-color-section {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+}
+
+.custom-color-input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.custom-color-input {
+  width: 40px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: none;
+}
+
+.custom-color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.custom-color-input::-webkit-color-swatch {
+  border: 2px solid var(--color-border, rgba(255, 255, 255, 0.3));
+  border-radius: 6px;
+}
+
+.custom-color-text {
+  flex: 1;
+  padding: 0.5rem;
+  background: var(--color-background, rgba(0, 0, 0, 0.2));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.2));
+  border-radius: 4px;
+  color: var(--color-text, white);
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.custom-color-text:focus {
+  outline: none;
+  border-color: var(--color-primary, #3498db);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.custom-color-text::placeholder {
+  color: var(--color-textSecondary, rgba(255, 255, 255, 0.5));
+}
+
+/* Recent Colors Section */
+.recent-colors-section {
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+}
+
+.recent-colors {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.recent-color {
+  width: 32px;
+  height: 32px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.recent-color:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: var(--color-border, rgba(255, 255, 255, 0.5));
+}
+
+.recent-color.selected {
+  border-color: var(--color-text, white);
+  box-shadow: 0 0 0 2px var(--color-background, rgba(255, 255, 255, 0.3));
+  transform: scale(1.05);
+}
+
+.recent-color.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Scrollbar Styling */
+.color-picker-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.color-picker-panel::-webkit-scrollbar-track {
+  background: var(--color-background, rgba(255, 255, 255, 0.1));
+  border-radius: 3px;
+}
+
+.color-picker-panel::-webkit-scrollbar-thumb {
+  background: var(--color-primary, #3498db);
+  border-radius: 3px;
+}
+
+.color-picker-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary, #2980b9);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .color-picker-toggle {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+  
+  .current-color-preview {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .color-picker-panel {
+    max-height: 350px;
+    padding: 1.25rem;
+  }
+  
+  .color-palette-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .palette-color {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+  
+  .recent-color {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+  
+  .custom-color-input {
+    width: 44px;
+    height: 36px;
+  }
+  
+  .custom-color-text {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .palette-title,
+  .custom-title,
+  .recent-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .color-palette-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .palette-color {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .recent-colors {
+    gap: 0.75rem;
+  }
+  
+  .recent-color {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .custom-color-input-group {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  
+  .custom-color-input {
+    width: 100%;
+    height: 44px;
+  }
+}
