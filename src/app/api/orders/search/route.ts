@@ -14,9 +14,15 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '10');
     const status = searchParams.get('status') || 'pending';
 
-    const where: any = {
-      status: status
-    };
+    const where: any = {};
+    
+    // Case-insensitive status matching
+    if (status) {
+      where.status = {
+        contains: status,
+        mode: 'insensitive'
+      };
+    }
 
     if (search) {
       where.OR = [

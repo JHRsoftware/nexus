@@ -564,7 +564,9 @@ const InvoiceManagement: React.FC = () => {
       price: Number(orderItem.price),
       totalPrice: Number(orderItem.totalPrice),
         availableQty: orderItem.product.availableQty,
-        costPrice: Number((orderItem.product as any).totalCost || 0)
+        costPrice: orderItem.product.availableQty > 0 
+          ? Number((orderItem.product.totalCost / orderItem.product.availableQty).toFixed(2))
+          : 0
       }));
 
       setInvoiceItems(invoiceItems);

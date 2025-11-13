@@ -455,16 +455,8 @@
   color: var(--color-textSecondary);
 }
 
-.draftButton {
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-}
 
-.draftButton:hover:not(:disabled) {
-  background-color: var(--color-border);
-  transform: translateY(-1px);
-}
+
 
 /* Messages */
 .message {
