@@ -179,8 +179,7 @@ export const config = {
      * - manifest.json (PWA manifest)
      * - sw.js (service worker)
      * - public (public files)
-     * - static assets (.js, .css, .png, etc.)
      */
-    '/((?!api/auth|_next/static|_next/image|favicon.ico|manifest.json|sw.js|.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json|xml|txt)$|public).*)',
+    '/((?!api/auth|_next/static|_next/image|favicon.ico|manifest.json|sw.js|public).*)',
   ],
 };
