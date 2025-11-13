@@ -27,8 +27,12 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
+  // Static file serving
+  trailingSlash: false,
+  
   // Output configuration for deployment
-  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
+  // Removed standalone mode for better Vercel compatibility with static files
+  // output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
 
   // Turbopack configuration (Next.js 16+)
   turbopack: {
@@ -75,6 +79,16 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+      // Ensure static files are served with correct headers
+      {
+        source: '/manifest.json',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/json',
           },
         ],
       },
