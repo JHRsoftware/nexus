@@ -22,7 +22,7 @@ const protectedRoutes = {
 };
 
 // Public routes that don't require authentication
-const publicRoutes = ['/login', '/test-login', '/health', '/api/auth/login', '/api/auth/logout', '/api/health-simple', '/api/debug', '/api/test-db'];
+const publicRoutes = ['/login', '/test-login', '/login-test', '/health', '/api/auth/login', '/api/auth/logout', '/api/health-simple', '/api/debug', '/api/test-db', '/api/login-debug'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
